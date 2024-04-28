@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>학사관리 프로그램 v1.0</title>
+    <!-- 부트스트랩 CDN 링크 -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <div th:replace="fragments/header :: header"></div>
+    <div th:replace="fragments/menu"></div>
+
+    <section class="container mt-5 text-center">
+        <h2 class="text-center mb-4">성적 입력</h2>
+        <form action="/sch2/examinput" method="post" style="max-width: 600px; margin: auto;">
+            <div class="mb-3 row">
+                <label for="examNo" class="col-sm-2 col-form-label">학번</label>
+                <div class="col-sm-6">
+                    <input type="text" class="form-control" id="examNo" name="examNo" required>
+                </div>
+            </div>
+            <div class="mb-3 row">
+                <label for="kor" class="col-sm-2 col-form-label">국어점수</label>
+                <div class="col-sm-6">
+                    <input type="number" class="form-control" id="kor" name="kor" required>
+                </div>
+            </div>
+            <div class="mb-3 row">
+                <label for="math" class="col-sm-2 col-form-label">수학점수</label>
+                <div class="col-sm-6">
+                    <input type="number" class="form-control" id="math" name="math" required>
+                </div>
+            </div>
+            <div class="mb-3 row">
+                <label for="eng" class="col-sm-2 col-form-label">영어점수</label>
+                <div class="col-sm-6">
+                    <input type="number" class="form-control" id="eng" name="eng" required>
+                </div>
+            </div>
+            <div class="mb-3 row">
+                <label for="hist" class="col-sm-2 col-form-label">역사점수</label>
+                <div class="col-sm-6">
+                    <input type="number" class="form-control" id="hist" name="hist" required>
+                </div>
+            </div>
+            <div class="mb-3 row">
+                <div class="col-sm-10 offset-sm-2">
+                    <button type="submit" class="btn btn-primary">등록하기</button>
+                </div>
+            </div>
+        </form>
+    </section>
+
+    <div th:replace="fragments/footer :: footer"></div>
+
+    <!-- 부트스트랩 자바스크립트 및 프로토타입 지원 라이브러리 CDN 링크 -->
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js"></script>
+</body>
+</html>
