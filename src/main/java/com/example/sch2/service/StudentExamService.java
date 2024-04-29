@@ -55,7 +55,6 @@ public class StudentExamService {
                 int rank = getRank(examDto, studentList);
                 studentDto.setRank(rank);
             }
-
             studentDtoList.add(studentDto);
         }
 
@@ -76,4 +75,83 @@ public class StudentExamService {
         }
         return rank;
     }
+
+    public int calculateSubjectTotal(List<StudentDto> studentList, String subject) {
+        int totalSubjectScore = 0;
+
+        for (StudentDto studentDto : studentList) {
+            if (studentDto.getExamDto() != null) {
+                ExamDto examDto = studentDto.getExamDto();
+                switch (subject) {
+                    case "kor":
+                        totalSubjectScore += examDto.getKor();
+                        break;
+                    case "math":
+                        totalSubjectScore += examDto.getMath();
+                        break;
+                    case "eng":
+                        totalSubjectScore += examDto.getEng();
+                        break;
+                    case "hist":
+                        totalSubjectScore += examDto.getHist();
+                        break;
+                    case "totalScore":
+                        totalSubjectScore += examDto.getTotalScore();
+                        break;
+                    case "avgScore":
+                        totalSubjectScore += examDto.getAvgScore();
+                        break;
+                    default:
+                        System.out.println("유효하지 않은 과목입니다");
+                        break;
+                }
+            }
+        }
+
+        return totalSubjectScore;
+    }
+
+    public double calculateSubjectAvg(List<StudentDto> studentList, String subject) {
+        int totalSubjectScore = 0;
+        int studentCount = 0;
+
+        for (StudentDto studentDto : studentList) {
+            if (studentDto.getExamDto() != null) {
+                ExamDto examDto = studentDto.getExamDto();
+                int score = 0;
+                switch (subject) {
+                    case "kor":
+                        score = examDto.getKor();
+                        break;
+                    case "math":
+                        score = examDto.getMath();
+                        break;
+                    case "eng":
+                        score = examDto.getEng();
+                        break;
+                    case "hist":
+                        score = examDto.getHist();
+                        break;
+                    case "totalScore":
+                        score = examDto.getTotalScore();
+                        break;
+                    case "avgScore":
+                        score = (int) examDto.getAvgScore();
+                        break;
+                    default:
+                        System.out.println("유효하지 않은 과목입니다");
+                        break;
+                }
+                totalSubjectScore += score;
+                studentCount++;
+            }
+        }
+
+        if (studentCount != 0) {
+            return (double) totalSubjectScore / studentCount;
+        } else {
+            return 0; // 성적이 있는 학생이 없는 경우 평균은 0으로 설정
+        }
+    }
+
 }

@@ -21,39 +21,52 @@
                 <th>반</th>
                 <th>번호</th>
                 <th>이름</th>
-
                 <th>국어</th>
                 <th>수학</th>
                 <th>영어</th>
                 <th>역사</th>
-
                 <th>합계</th>
                 <th>평균</th>
                 <th>석차</th>
             </tr>
             </thead>
             <tbody>
+            <!-- 학생 데이터 반복 출력 -->
             <tr th:each="student : ${dto}">
                 <!-- 인적사항 -->
                 <td th:text="${#strings.substring(student.studentNo, 0, 1)}"></td>
                 <td th:text="${#strings.substring(student.studentNo, 1, 3)}"></td>
                 <td th:text="${#strings.substring(student.studentNo, 3, 5)}"></td>
                 <td th:text="${student.name}"></td>
-
                 <!-- 성적 -->
                 <td th:text="${student.examDto != null ? student.examDto.kor : ''}"></td>
                 <td th:text="${student.examDto != null ? student.examDto.math : ''}"></td>
                 <td th:text="${student.examDto != null ? student.examDto.eng : ''}"></td>
                 <td th:text="${student.examDto != null ? student.examDto.hist : ''}"></td>
-
                 <!-- 개인별 성적 합계 -->
                 <td th:text="${student.examDto != null ? student.examDto.totalScore : ''}"></td>
-
                 <!-- 개인별 성적 평균 -->
                 <td th:text="${student.examDto != null ? student.examDto.avgScore : ''}"></td>
-
                 <!-- 개인별 석차 -->
                 <td th:text="${student.examDto != null ? student.rank : ''}"></td>
+            </tr>
+            <tr>
+                <td colspan="4">총합</td>
+                <td th:text="${totalKor}"></td>
+                <td th:text="${totalMath}"></td>
+                <td th:text="${totalEng}"></td>
+                <td th:text="${totalHist}"></td>
+                <td th:text="${totalTotalScore}"></td>
+                <td th:text="${totalAvgScore}"></td>
+            </tr>
+            <tr>
+                <td colspan="4">총평균</td>
+                <td th:text="${avgKor}"></td>
+                <td th:text="${avgMath}"></td>
+                <td th:text="${avgEng}"></td>
+                <td th:text="${avgHist}"></td>
+                <td th:text="${avgTotalScore}"></td>
+                <td th:text="${avgAvgScore}"></td>
             </tr>
             </tbody>
         </table>

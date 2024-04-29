@@ -18,7 +18,7 @@ public class ExamDto {
     private int hist;
 
     private int totalScore;
-    private double avgScore; // avgScore 필드 추가
+    private double avgScore;
 
     public static ExamDto fromExam(Exam exam) {
         return new ExamDto(
@@ -40,7 +40,7 @@ public class ExamDto {
                 dto.getEng(),
                 dto.getHist(),
 
-                dto.getTotalScore(), // 총점을 그대로 가져옴
+                dto.getTotalScore(),
                 dto.getAvgScore()
         );
     }
